@@ -12,7 +12,6 @@
         button:hover { background: #fff; color: #000; }
         .hidden { display: none; }
         
-        /* Scary Glitch & Matrix Background */
         canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.1; }
         .glitch-screen { animation: glitch 0.1s infinite; background: #200 !important; }
         @keyframes glitch {
@@ -80,7 +79,6 @@
     <audio id="alarm" loop src="https://www.soundjay.com/buttons/sounds/beep-07.mp3"></audio>
 
     <script>
-        // Matrix Background Effect
         const canvas = document.getElementById('matrix');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
@@ -138,7 +136,7 @@
                 let m = Math.floor(timeLeft / 60);
                 let s = timeLeft % 60;
                 timerDisplay.innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
-                if (timeLeft === 294) { // Glitch after 6 seconds
+                if (timeLeft === 294) {
                     clearInterval(countdown);
                     triggerGlitch();
                 }
@@ -149,7 +147,7 @@
             document.getElementById('step4').classList.add('hidden');
             document.getElementById('step5').classList.remove('hidden');
             document.getElementById('mainBody').classList.add('glitch-screen');
-            canvas.style.opacity = "1"; // Make matrix bright
+            canvas.style.opacity = "1";
             alarm.play();
         }
     </script>
