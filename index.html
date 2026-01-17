@@ -5,96 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FB CLOUD BYPASS - SECURE ACCESS</title>
     <style>
-        body { background-color: #050505; color: #00FF00; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; overflow: hidden; transition: 0.1s; }
-        .box { width: 90%; max-width: 500px; border: 1px solid #00FF00; padding: 25px; background: rgba(0, 20, 0, 0.95); box-shadow: 0 0 15px #00FF00; text-align: center; position: relative; z-index: 10; }
-        input { background: #000; border: 1px solid #00FF00; color: #00FF00; padding: 12px; width: 85%; margin: 10px 0; outline: none; font-size: 14px; }
-        button { background: #00FF00; color: #000; border: none; padding: 12px 25px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-top: 10px; transition: 0.3s; }
-        button:hover { background: #008800; color: white; }
+        body { background-color: #050505; color: #00FF00; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; overflow: hidden; }
+        .box { width: 90%; max-width: 500px; border: 1px solid #00FF00; padding: 25px; background: rgba(0, 10, 0, 0.95); box-shadow: 0 0 20px #00FF00; text-align: center; position: relative; z-index: 100; }
+        input { background: #000; border: 1px solid #00FF00; color: #00FF00; padding: 12px; width: 85%; margin: 10px 0; outline: none; font-size: 14px; text-align: center; }
+        button { background: #00FF00; color: #000; border: none; padding: 12px 25px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-top: 10px; transition: 0.3s; width: 92%; }
+        button:hover { background: #fff; color: #000; }
         .hidden { display: none; }
         
-        /* Glitch Animation */
-        .glitch-screen { animation: glitch 0.2s infinite; background: #220000 !important; }
+        /* Scary Glitch & Matrix Background */
+        canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.1; }
+        .glitch-screen { animation: glitch 0.1s infinite; background: #200 !important; }
         @keyframes glitch {
-            0% { transform: translate(2px, 2px) skew(0deg); filter: hue-rotate(0deg); }
-            50% { transform: translate(-2px, -2px) skew(5deg); filter: invert(1); }
-            100% { transform: translate(0, 0) skew(-5deg); }
+            0% { transform: translate(4px, 0); filter: hue-rotate(90deg); }
+            50% { transform: translate(-4px, 0); filter: invert(1) contrast(2); }
+            100% { transform: translate(0, 0); }
         }
 
-        .warning-text { color: red; font-size: 40px; font-weight: bold; text-shadow: 0 0 10px white; }
-        #timer { font-size: 45px; color: yellow; margin: 20px 0; }
-        .payment-card { border: 1px dashed white; padding: 15px; margin: 15px 0; background: rgba(255, 255, 255, 0.1); }
+        .warning-text { color: #ff0000; font-size: clamp(30px, 8vw, 50px); font-weight: bold; text-shadow: 0 0 15px white; margin: 5px 0; }
+        #timer { font-size: 50px; color: #ffcc00; margin: 15px 0; text-shadow: 0 0 10px #ffcc00; }
+        .payment-card { border: 2px dashed #00FF00; padding: 15px; margin: 15px 0; background: rgba(0, 255, 0, 0.05); }
+        .cam-msg { color: #ff00ff; font-weight: bold; font-size: 20px; animation: blinker 0.5s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
     </style>
 </head>
 <body id="mainBody">
 
+    <canvas id="matrix"></canvas>
+
     <div class="box" id="step1">
-        <h2>FB DATA EXTRACTOR v9.2</h2>
-        <p style="font-size: 12px; color: #aaa;">[ STATUS: SERVER ONLINE ]</p>
+        <h2>CENTRAL EXPLOIT v10.0</h2>
+        <p style="font-size: 12px;">[ STATUS: BYPASSING SECURITY ]</p>
         <input type="text" id="targetLink" placeholder="Paste Profile Link Here...">
         <br>
-        <button onclick="goToPayment()">CONTINUE TO ACCESS</button>
+        <button onclick="goToPayment()">START EXTRACTION</button>
     </div>
 
     <div class="box hidden" id="step2">
-        <h2 style="color: yellow;">PAYMENT VERIFICATION</h2>
-        <p>To access private data, pay the server decryption fee.</p>
+        <h2 style="color: yellow;">SECURITY DEPOSIT</h2>
+        <p>Decryption servers require a maintenance fee.</p>
         <div class="payment-card">
             Send <strong>500 BDT</strong> to Nagad (Personal):<br>
-            <span style="font-size: 22px; color: #00FF00;">017XXXXXXXX</span>
+            <span style="font-size: 22px; color: #00FF00; letter-spacing: 1px;">+880 1329-866415</span>
         </div>
-        <p style="font-size: 12px;">Enter Transaction ID to enable Download Button:</p>
-        <input type="text" id="trxInput" placeholder="Enter 8-digit TrxID..." oninput="validateTrx()">
+        <p style="font-size: 11px;">Verification is automated. Button unlocks after TrxID entry.</p>
+        <input type="text" id="trxInput" placeholder="Enter Transaction ID..." oninput="validateTrx()">
         <br>
-        <button id="downloadBtn" disabled style="opacity: 0.3; cursor: not-allowed;" onclick="goToEmail()">DOWNLOAD DATA</button>
+        <button id="downloadBtn" disabled style="opacity: 0.3; cursor: not-allowed;" onclick="goToEmail()">PROCEED TO DATA</button>
     </div>
 
     <div class="box hidden" id="step3">
-        <h2>RECIPIENT INFO</h2>
-        <p>Transaction ID Verified. Enter email to receive the download package.</p>
+        <h2>DESTINATION EMAIL</h2>
+        <p>Target found. Where should we send the data zip?</p>
         <input type="email" id="emailInput" placeholder="Enter Your Email...">
         <br>
-        <button onclick="startFinalProcess()">START EXTRACTION</button>
+        <button onclick="startFinalProcess()">INJECT DATA PACKETS</button>
     </div>
 
     <div class="box hidden" id="step4">
-        <h2>PROCESSING REQUEST...</h2>
-        <p>Uploading files to cloud storage...</p>
+        <h2>UPLOADING...</h2>
         <div id="timer">05:00</div>
-        <p style="font-size: 12px;">Do not refresh this page.</p>
+        <p style="font-size: 14px; color: #888;">Fetching: private_messages.json...</p>
     </div>
 
     <div class="box hidden" id="step5">
-        <h1 class="warning-text">WARNING!</h1>
-        <p>SYSTEM BREACH DETECTED</p>
-        <p style="color: yellow;">ACCESS TO META SERVERS IS FORBIDDEN.</p>
-        <p>YOUR DEVICE ID & LOCATION HAS BEEN LOGGED.</p>
-        <p style="border: 1px solid white; padding: 10px;">REPORT SENT TO CYBER CRIME UNIT.</p>
+        <h1 class="warning-text">CAUTION!</h1>
+        <p style="color: white; font-weight: bold;">META CYBER-OPS DETECTED YOUR IP</p>
+        <p class="cam-msg">FRONT CAMERA ACTIVE: CAPTURING FACE...</p>
+        <p style="color: yellow;">YOUR LOCATION HAS BEEN SHARED WITH NEAREST POLICE STATION.</p>
+        <div style="border: 2px solid white; padding: 10px; background: black; color: red; font-weight: bold; font-size: 12px;">
+            DEVICE LOCKDOWN IN: 10... 9... 8...
+        </div>
     </div>
 
     <audio id="alarm" loop src="https://www.soundjay.com/buttons/sounds/beep-07.mp3"></audio>
 
     <script>
+        // Matrix Background Effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0F0";
+            ctx.font = fontSize + "px arial";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 33);
+
         const alarm = document.getElementById('alarm');
 
         function goToPayment() {
-            const link = document.getElementById('targetLink').value;
-            if (link.length < 5) { alert("Please enter a valid link!"); return; }
+            if (document.getElementById('targetLink').value.length < 5) return alert("Link required!");
             document.getElementById('step1').classList.add('hidden');
             document.getElementById('step2').classList.remove('hidden');
         }
 
-        // Only enable Download button if TrxID is entered
         function validateTrx() {
-            const trx = document.getElementById('trxInput').value;
             const btn = document.getElementById('downloadBtn');
-            if (trx.length >= 6) {
-                btn.disabled = false;
-                btn.style.opacity = "1";
-                btn.style.cursor = "pointer";
+            if (document.getElementById('trxInput').value.length >= 6) {
+                btn.disabled = false; btn.style.opacity = "1"; btn.style.cursor = "pointer";
             } else {
-                btn.disabled = true;
-                btn.style.opacity = "0.3";
-                btn.style.cursor = "not-allowed";
+                btn.disabled = true; btn.style.opacity = "0.3";
             }
         }
 
@@ -104,23 +127,18 @@
         }
 
         function startFinalProcess() {
-            const email = document.getElementById('emailInput').value;
-            if (!email.includes('@')) { alert("Invalid Email!"); return; }
-            
+            if (!document.getElementById('emailInput').value.includes('@')) return alert("Email required!");
             document.getElementById('step3').classList.add('hidden');
             document.getElementById('step4').classList.remove('hidden');
-
+            
             let timeLeft = 300;
             const timerDisplay = document.getElementById('timer');
-
             const countdown = setInterval(() => {
                 timeLeft--;
                 let m = Math.floor(timeLeft / 60);
                 let s = timeLeft % 60;
                 timerDisplay.innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
-
-                // Force glitch after 7 seconds for the prank
-                if (timeLeft === 293) {
+                if (timeLeft === 294) { // Glitch after 6 seconds
                     clearInterval(countdown);
                     triggerGlitch();
                 }
@@ -131,6 +149,7 @@
             document.getElementById('step4').classList.add('hidden');
             document.getElementById('step5').classList.remove('hidden');
             document.getElementById('mainBody').classList.add('glitch-screen');
+            canvas.style.opacity = "1"; // Make matrix bright
             alarm.play();
         }
     </script>
